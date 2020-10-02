@@ -1,0 +1,18 @@
+// Adaptivity
+@mixin media-screen($size, $direction) {
+  @media screen and (#{$direction}: $size){ @content; }
+}
+
+// Arrow in select
+@mixin arrow($deg) {
+  display: inline-block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  right: 2px;
+  top: 30px;
+  border-top: 1px solid $light-font-color;
+  border-right: 1px solid $light-font-color;
+  transform: rotate($deg);
+  z-index: 2;
+}

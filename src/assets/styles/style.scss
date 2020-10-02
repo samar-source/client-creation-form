@@ -1,0 +1,293 @@
+body {
+    background-color: $body-color;
+    margin: 0;
+
+// GitHub icon
+    #github-icon {
+        position: fixed;
+        right: 0;
+        top: 10%;
+        z-index: 10000;
+        background-color: #000;
+        border-radius: 10px 0 0 10px;
+        text-align: right;
+        text-decoration: none;
+        cursor: pointer;
+        padding:  5px 10px;
+        display: block;
+        transition: 0.3s;
+        &:hover {
+            padding-right: 40px;
+        }
+    }
+
+// Message about a successfully created client
+    .alert {
+        display: flex;
+        justify-content:center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .7);
+        z-index: 100;
+            .alert-text {
+                position: fixed;
+                width: 480px;
+                height: 100px;
+                margin: 25% auto;
+                background-color: $main-font-color;
+                text-align: center;
+                font-size: 1.5rem;
+                line-height: 100px;
+                pointer-events:none;
+                    @include media-screen(767px, max-width) {
+                        width: auto;
+                        height: auto;
+                        padding: 15px;
+                    }
+                    @include media-screen(319px, max-width) {
+                        line-height: 50px;
+                    }
+            }
+    }
+    #app {
+        font-family: 'Roboto', sans-serif;
+        position: relative;
+
+// Form
+        .form {
+            padding: 6% 0px;
+            @include media-screen(768px, max-width) {
+                padding: 0;
+            }
+            .form-step {
+                width: 480px;
+                margin: 0 auto;
+                background: $main-font-color;
+                box-shadow: 4px 4px 6px 0px #ccc;
+                @include media-screen(768px, max-width) {
+                    width: 100%;
+                }
+                .form-header {
+                    font-family: 'Raleway', sans-serif;
+                    font-size: 2.25rem;
+                    color: $main-font-color;
+                    padding: 40px 30px 20px 30px;
+                    background: linear-gradient(to top, $gradient-color-2, $gradient-color-1);
+                    cursor: default;
+                }
+                .form-body {
+                    padding: 40px 30px 50px;
+                    background: $main-font-color;
+
+// Form field
+                    .form-group {
+                        margin-bottom: 40px;
+                        .form-label {
+                            display: block;
+                            font-size: 1rem;
+                            color: $light-font-color;
+                            padding: 2px;
+                        }
+                        .form-control {
+                            display: block;
+                            width: 100%;
+                            line-height: 1.5rem !important;
+                            font-size: 1.125rem !important;
+                            color: $dark-font-color;
+                            border: none;
+                            border-bottom: 1px solid $line-color;
+                            box-sizing: border-box;
+                            margin-bottom: 10px;
+                            outline: none;
+                        }
+                        .wrapperPhoneNumber {
+                            display: flex;
+                            border-bottom: 1px solid $line-color;
+                            margin-bottom: 10px;
+                            width: 60%;
+                            @include media-screen(768px, max-width) {
+                               width: 100%;
+                            }
+                            #countryCode {
+                                display: inline-block;
+                                padding-bottom: 1px;
+                                font-size: 1.125rem;
+                                color: $dark-font-color;
+                                padding: 1px 2px 2px;
+                            }
+                            #phoneNumber {
+                                display: inline-block;
+                                width: 100%;
+                                border: none;
+                                margin-bottom: 0px;
+                            }
+                            #phoneNumber::placeholder {
+                                color:$line-color;
+                            }
+                        }
+
+// Error message
+                        .error {
+                            font-size: 0.8125rem;
+                            color: $error-color;
+                        }
+
+// Checkbox
+                        #checkboxLabel {
+                            display: inline-block;
+                            font-size: 0.75rem;
+                            margin-left: 5px;
+                            cursor: pointer;
+                            vertical-align: top;
+                        }
+                        input[type="checkbox"] {
+                            position: absolute;
+                            margin-left: 0;
+                            margin-top: 0;
+                            width: 15px;
+                            height: 15px;
+                            opacity: 0;
+                            z-index: 3;
+                            cursor: pointer;
+                        }
+                        input[type="checkbox"]:checked ~ .checkmark {
+                            background-color: $gradient-color-1;
+                            border-color: $gradient-color-1;
+                        }
+                        .checkmark {
+                            display: inline-block;
+                            height: 13px;
+                            width: 13px;
+                            border: 1px solid $line-color;
+                            position: relative;
+                            cursor: pointer;
+                        }
+                        .checkmark:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                        }
+                        input[type="checkbox"]:checked ~ .checkmark:after {
+                            display: block;
+                        }
+                        .checkmark:after {
+                            left: 0px;
+                            right: 0px;
+                            margin: auto;
+                            width: 4px;
+                            height: 8px;
+                            border: solid #fff;
+                            border-width: 0 2px 2px 0;
+                            transform: rotate(45deg);
+                        } 
+                    }
+
+// Date field
+                    .date-field {
+                        position: relative;
+                        width: 60%;
+                        @include media-screen(768px, max-width) {
+                            width: 100%;
+                        }
+                        .form-control {
+                            cursor: pointer;
+                        }
+                        input[type="date"] {
+                            font-family: 'Roboto', sans-serif;
+                            font-size: 1.125rem !important;
+                            line-height: 1.5rem !important;
+                            width: 100%;
+                            color: $dark-font-color !important;
+                            cursor: pointer;
+                            position: relative;
+                            z-index: 1;
+                        }
+                        input[type="date"]::-webkit-calendar-picker-indicator {
+                            width: 100% !important;
+                            position: absolute;
+                            opacity: 0 !important;
+                            cursor: pointer;
+                            background-size: contain;
+                            z-index: 3;
+                        }
+                        .arrow {
+                            @include arrow(135deg);
+                        }
+                    }
+
+// Select field
+                    .select-field{
+                        position: relative;
+                        width: 60%;
+                        @include media-screen(768px, max-width) {
+                            width: 100%;
+                        }
+                        select {
+                            width: 100%;
+                            -webkit-appearance:none;
+                            -moz-appearance:none;
+                            -ms-appearance:none;
+                            appearance: none;
+                            cursor: pointer;
+                        }
+                        .arrow {
+                            @include arrow(135deg);
+                        }
+                    }
+
+// Multiselect field
+                    .multiple-field {
+                        select {
+                            width: 60% !important;
+                            overflow: hidden;
+                            height: 75px;
+                            padding-top: 2px;
+                            cursor: pointer;
+                            @include media-screen(768px, max-width) {
+                                width: 100% !important;
+                            }
+                            &::-webkit-scrollbar {
+                                -webkit-appearance: none;
+                                width: 7px;
+                            }
+                        }
+                        .mark{
+                            font-size: 0.8125rem;
+                            color: $mark-color;
+                        }
+                    }
+
+// Button
+                    .button {
+                        font-family: 'Raleway', sans-serif;
+                        color: $main-font-color;
+                        font-size: 1.125rem;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        background: linear-gradient(to top, $gradient-color-2, $gradient-color-1);
+                        margin-top: 30px;
+                        padding: 10px 30px;
+                        border: none;
+                        cursor: pointer;
+                        outline: none;
+                        &:hover {
+                            background: $gradient-color-1;
+                        }
+                    }
+                    .button-left {
+                        margin-right: 20px;
+                    }
+                    @include media-screen(575px, max-width) {
+                        .button-left {
+                            margin-right: 10px;
+                        }
+                        .button-right {
+                            float: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
